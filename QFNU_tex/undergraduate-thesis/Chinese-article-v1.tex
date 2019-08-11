@@ -1,0 +1,409 @@
+\documentclass[UTF8,oneside,12pt]{article}
+\usepackage{ctex}
+%--- 可以用下面一命令代替上面两行 -----------
+%\documentclass[10pt]{ctexart}   %-------ctex + article, 正文字体大小规定为10pt --------
+%-----------------------------------------------
+
+
+%------- 一些常用数学宏包 --------------------------
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{dsfont}
+%------------------------------------------------------
+\usepackage[colorlinks,linkcolor=red,anchorcolor=blue,citecolor=red]{hyperref}  %--- 超链接宏包
+\usepackage{cite}          %--- 引用宏包
+
+\usepackage{indentfirst}     %-- 首行缩进宏包
+\usepackage{array}
+\usepackage{diagbox}
+
+\usepackage{color}
+
+\usepackage{graphicx}   %--- 插图宏包
+\usepackage{caption}
+\captionsetup{font={footnotesize,bf}}
+
+
+%-------  geometry 宏包用来调整页面的页边距。默认的页面边距为A4标准。
+%\usepackage{geometry}
+
+%------  下面通过指定geometry 宏包的选项参数来自定义页面边距 ----------------
+\usepackage[
+  hoffset=5mm,%%装订线
+  left=2.5cm,      %% 左边距
+  right=2.5cm,     %% 右边距
+  top=2.5cm,       %% 上边距 包括页眉
+  bottom=2cm,    %% 下边距 包括页脚
+  headheight=0cm, %%页眉
+  footskip=1.0cm,  %% 页脚
+  paperwidth=21cm,
+  paperheight=29.7cm
+  ]{geometry}
+
+\def\baselinestretch{1}         %-- 行间距为1倍行间距
+%\setlength{\baselineskip}{20pt}  %-- 行间距为固定值20磅
+%\setlength{\parskip}{0.7ex plus0.3ex minus0.3ex} % 段落间距
+\allowdisplaybreaks[4]       %% 允许多行公式中间换页
+
+
+
+%--------------------------------
+
+
+
+%----------------------- 字体设置 ----------------------------------------
+
+%---- 英文字体设置为 Times New Roman -------
+\usepackage{fontspec}
+\usepackage{newtxtext}       %-- 设置文字部分的英文字体为 Times New Roman
+%\usepackage{newtxmath}    %-- 设置数学式中的英文字体为 Times New Roman
+%-----------------------------------------------
+
+%\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+%\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaoyihao}{\fontsize{24pt}{\baselineskip}\selectfont}
+%\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+%\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+%\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+
+%-------------------------------------------------------------------------
+
+%---------------- 设置目录、标题 -------------------------------------
+\usepackage{titletoc,titlesec}
+[block]
+\renewcommand{\contentsname}{{
+\begin{center}
+\sihao\heiti 目\ \ 录
+\end{center}
+}}
+\newcommand{\sectionname}{节}
+\titleformat{\section}[block]{\sihao\fangsong}{\thesection}{10pt}{}
+\titleformat{\subsection}[block]{\xiaosihao\heiti}{\thesubsection}{10pt}{}
+\titleformat{\subsubsection}[block]{\xiaosihao\fangsong}{\thesubsubsection}{10pt}{}
+
+\titlespacing{\section}{0pt}{0.6ex}{0.6ex}
+\titlespacing{\subsection}{0.5ex}{0ex}{0ex}
+\titlespacing{\subsubsection}{1ex}{0ex}{0ex}
+
+%--------------- 设置定理环境 -----------------------------------------
+\newtheoremstyle{DingLi}
+  {1.5ex plus 1ex minus .2ex}%上方的空行
+        {1.5ex plus 1ex minus .2ex }%下方的空行
+        {\kaishu}%内容字体
+        {}%缩进
+        {\heiti}%定理头部字体
+        {.}%定理头部后的标点
+        {1em}%定理头部后的空格
+        {}%定理头部的说明
+\theoremstyle{DingLi}
+
+\numberwithin{equation}{section}
+
+
+\newtheorem{theorem}{\hspace{2em}定理}
+%\newtheorem{theorem}{\hspace{2em}定理}
+\newtheorem{definition}{\hskip 2em 定义}
+\newtheorem{lemma}{\hskip 2em 引理}
+\newtheorem{corollary}{\hskip 2em 推论}
+\newtheorem{assumption}{\hskip 2em 条件}
+\newtheorem{remark}{\hskip 2em 注}
+\newtheorem{proposition}{\hskip 2em 命题}
+\newtheorem{property}{\hskip 2em 性质}
+\newtheorem{example}{\hskip 2em 例}
+%---------------------------------------------------------------------
+
+
+
+%---------- 设置证明环境 ---------------------------------------------
+\makeatletter% amsthm: get rid of \itshape and \@addpunct{.}
+\renewenvironment{proof}[1][\proofname]{\par%
+\pushQED{\qed}%
+\normalfont \topsep6\p@\@plus6\p@\relax%
+\trivlist%
+\item[\hskip\labelsep%
+#1]\ignorespaces%
+}{%
+\popQED\endtrivlist\@endpefalse%
+}
+\makeatother
+\renewcommand{\proofname}{\heiti{证明}}%注意字体的设置
+
+
+%---------------------------------------------------------------------
+
+
+%-------------- 自定义命令 ------------------------------
+\def\l{\lambda}\def\L{\Lambda}
+\def\D{\Delta}
+\def\de{\delta}
+\def\d{\mathop{}\!\mathrm{d}}
+\def\gm{\gamma}
+\def\a{\alpha}
+\def\b{\beta}
+
+\def\div{{\rm div}}
+
+
+\begin{document}
+
+\vskip 2cm
+
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+\pagestyle{plain}
+\setcounter{page}{1}
+
+
+\noindent\framebox[4.45cm][l]{\shortstack[l]{\linespread{2.0}\wuhao 成 \hspace{1.5em} 绩：{\rule{20mm}{0.4pt}}   \\\linespread{2.0} \quad \\ \wuhao 指导教师：{\rule{20mm}{0.4pt}}}}
+\vskip 1.5cm
+\begin{center}
+\sanhao \heiti 这里是论文标题
+\end{center}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+{\fangsong
+\begin{center}
+数学与应用数学(师范)专业学生  \quad  张三
+\end{center}
+\begin{center}
+指导教师  \quad  李四
+\end{center}
+}
+%-----------  中英文摘要 -----------------------------------------------
+{\wuhao
+\addcontentsline{toc}{section}{摘要} %---- 将“摘要”加入到目录中 -----
+
+\noindent {\heiti 摘要}:
+摘要主要是说明研究工作的目的、方法、结果和结论. 摘要应具有独立性和自含性, 即不阅读全文, 就能获得论文必要的信息, 使读者确定有无必要阅读全文. 摘要中应用第三人称的方法记述论文的性质和主题, 不使用``本文''、``作者''等作为主语，应采用``对…进行了研究''、``报告了…现状''、“进行了…调查”等表达方式。排除在本学科领域已成为常识的内容，不得重复题目中已有的信息。语句要合乎逻辑关系，尽量同正文的文体保持一致。结构要严谨，表达要简明，语义要确切，一般不再分段落。对某些缩略语、简称、代号等，除了相邻专业的读者也能清楚理解的以外，在首次出现处必须加以说明。摘要中通常不用图表、化学结构式以及非公知公用的符号和术语。摘要包含中文摘要和外文摘要. 中文摘要字数约为200-300字, 外文摘要约为200-300个实词。
+
+
+
+\addcontentsline{toc}{section}{关键词}
+\noindent {\heiti 关键词}:
+ 甲\   乙\   丙\  丁\   戊
+}
+
+
+\begin{center}
+{\sanhao English title}
+\end{center}
+\begin{center}
+Student majoring in applied mathematics\quad\quad     Long Aotian
+\end{center}
+\begin{center}
+Tutor\quad\quad     Zhang San
+\end{center}
+
+{\wuhao
+\addcontentsline{toc}{section}{Abstract}
+\noindent{\bf Abstract}:
+Blabla ..........
+
+\addcontentsline{toc}{section}{Key words}
+\noindent{\bf Key words}:
+Aa;  Bb;  Cc;  Dd;  Ee
+
+}
+%-------------- 以下为正文部分 -----------------------------
+\section{引言}
+
+前言（引言）主要说明研究工作的目的、范围，对前人的研究状况进行评述分析，阐明研究设想、研究方法、实验设计、预期结果、成果的意义等。
+
+在文献\cite{Liang-Xu-Auto18}(\textcolor[rgb]{1.00,0.00,0.00}{注意这里对参考文献的交叉引用方法})中, 作者研究了.......
+%--------  在“参考文献”部分，给这条文献加了一标签 Liang-Xu-Auto18
+
+
+\section{一个一级标题，自动编号}
+
+\subsection{一个二级标题，自动编号}
+
+\subsubsection{一个三级标题，自动编号}
+
+
+下面是一个定义. 将对应的\LaTeX{}环境命令里的definition换成theorem, lemma, proposition, corollary,example, remark,就得到定理、引理、命题、推论、例、注等)
+\begin{definition}[\cite{Liang-Xu-Auto18}]\label{Def: positive def matrix}
+%------\begin{definition}[引用的定义所在的参考文献的标签] \label{给这个定义设置一个标签}
+%----- 标签lable里的Def: positive def matrix是作者自己加上去的，为了方便交叉引用，加的标签最好有一定的意义，容易记忆
+$n$阶实对称矩阵$A$为正定的，如果它所对应的二次型$X^T A X$是正定的，即对任意非零的$n$维列向量$X$, 有$X^T A X>0$.
+\end{definition}
+
+
+
+根据定义\ref{Def: positive def matrix}(\textcolor[rgb]{1.00,0.00,0.00}{注意这里的交叉引用方法}), 我们有......
+
+下面是性质，还有一个列表的使用例子，注意列表编号的格式。
+\begin{property}\label{Property: positive matrix}
+如果$A$和$B$都是正定矩阵, 则有:
+\begin{itemize}
+  \item[(1)]$A+B$是正定矩阵;
+  \item[(ii)]$kA$$(k>0)$是正定矩阵;
+  \item[(bla)]blablabla;
+  \item[1.]
+  \item[i.]
+  \item[A.]
+\end{itemize}
+\end{property}
+
+以下是一个引理。
+\begin{lemma}
+设$E:\Bbb{R}^+ \to \Bbb{R}^+$ ($\Bbb{R}^+=[0,+\infty)$)是一个单调递减的函数且存在常数$T>0$，使得
+$$\int_t^{\infty} E(s) \d s \leq TE(t),\quad \forall t\in \Bbb{R}^+,$$
+则
+$$E(t)\leq E(0) e^{1- \frac{t}{T}},\quad \forall t\geq T. $$
+\end{lemma}
+
+下面是一个定理及证明, 注意不等式(\ref{ineq-1})的交叉引用方法.
+\begin{theorem}
+设$E$是定义在$[0,\infty)$上的非负递减函数. 如果
+\begin{equation}\label{ineq-1}  %----- 标签lable里的ineq-1是作者自己加上去的，为了方便交叉引用，加的标签最好有一定的意义，容易记忆
+\int_S^{\infty} E(t) \d t \leq CE(S),\quad \forall S\geq S_0,
+\end{equation}
+其中$S_0$, $C$为固定常数, 则
+$$E(t)\leq E(0)e^{1-\frac{t}{S_0+C}},\quad \forall t\geq 0.$$
+\end{theorem}
+
+\begin{proof}
+若$0\leq S\leq S_0$, 由(\ref{ineq-1})式可知
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  \int_S^{\infty} E(t)\d t &=& \int_S^{S_0} E(t)\d t +\int_{S_0}^{\infty} E(t)\d t\\
+  &\leq &(S_0-S) E(S)+CE(S_0)\\
+ &= &S_0 E(S) +CE(S)
+\end{eqnarray*}
+因此, 对$\forall S\geq 0$, 有
+$$\int_S^{\infty} E(t) \d t \leq  (S_0+C)E(S).$$
+由引理3得
+$$E(t)\leq E(0)e^{1-\frac{t}{S_0+C}},\quad \forall t\geq 0.$$
+\end{proof}
+\begin{remark}
+这里是一个注。
+\end{remark}
+
+\begin{theorem}[局部存在性与唯一性, \cite{Liang-Xu-Auto18}]  \label{Thm: local existence}
+ 假设\textbf{条件} 成立, 则存在依赖于初始二次能量~$\mathscr{E}(0)$ 的~$T>0$ 使得问题在时间区间~$(-\infty, T]$ 上有弱解. 另外, 我们有下面的能量恒等式成立:
+\begin{eqnarray}
+&&\mathscr{E}+\int_0^t\int_\Omega |u_t|^{m+1} \d x\d \tau-\frac12 \int_0^t\int_0^{-\infty}|\nabla w(\tau,s)|_2^2 \mu'(s)\d s\d \tau\nonumber\\
+&&=\mathscr{E}(0)+\int_0^t\int_\Omega |u|^{p-1}uu_t\d x\d\tau,\label{4 quadratic energy identity}
+\end{eqnarray}
+\end{theorem}
+
+\subsection{数学公式、符号的例子}
+
+行列式的例子
+\begin{equation*}
+  |\lambda E- A|=
+  \begin{vmatrix}
+   \lambda-a_{11} & -a_{12} & -a_{13}&\cdots &-a_{1n} \\
+    -a_{21} & \lambda-a_{22} & -a_{23} &\cdots & -a_{2n}\\
+    \vdots & \vdots & \vdots&\ddots&\vdots \\
+    -a_{n1} & -a_{n2} & -a_{n3} &\cdots& \lambda -a_{nn}
+ \end{vmatrix}
+\end{equation*}
+
+矩阵的例子
+\begin{equation*}
+A=(a_{ij})_{n\times n} =
+\begin{pmatrix}
+  a_{11} & a_{12} & a_{13} & \cdots & a_{1n}\\
+  a_{21} & a_{22} & a_{23} &\cdots & a_{2n}\\
+ \vdots & \vdots & \vdots & \ddots& \vdots\\
+ a_{n1} & a_{n2} & a_{n3} &\cdots & a_{nn}
+\end{pmatrix}
+\end{equation*}
+
+方程组的例子
+\begin{equation*}
+\left\{   %------ 定界符是大括号｛。 \left\{   与后面的\right. 对应
+    \begin{array}{l} %---  左对齐（l=left）
+      u_{tt}-\Delta u+|u_t|^{m-1}u_t=|u|^{p-1}u,\quad (x,t)\in \Bbb{R}^n\times (0,\infty),\\
+      u(0,x)=u_0(x),\quad u_t(x,0)=u_1(x),
+      \end{array}
+\right.
+\end{equation*}
+
+\begin{equation*}
+\left\{
+   \begin{array}{rl} %---- 分为两列，第一列右对齐（r=right），第二列左对齐（l=left）
+      -x & \text{if } x < 0,\\
+       0 & \text{if } x = 0,\\
+       x & \text{if } x > 0.
+\end{array} 
+\right.
+\end{equation*}
+
+
+长公式
+\begin{eqnarray*}
+J(\psi_t(v);t)&=&\frac{p-2}{2p}(|\nabla \psi_t(v)|_2^2+b|\psi_t(v)|_2^2)+\frac1p I(\psi_t(v);t) \\
+                &=&\frac{p-2}{2p}s^2(v;t)\|v\|^2 \\
+                &=&\frac{p-2}{2p}(k(t))^{-\frac{2}{p-2}}\|v\|^{\frac{2p}{p-2}}.
+\end{eqnarray*}
+\begin{eqnarray*}
+  &       &\frac{\gamma_a^p\left(2\rho(0)\right)^{1-\frac{p}{2}}}{\left(p-2\right)k(T_3)}\leq T^* \\
+  &\leq & T_3:= \frac{8(p-1)(a\l_1+1)\rho(0)}{(p-2)^2[(p-2)(b+\l_1)\rho(0)-p(a\l_1+1)J(u_0;0)]};
+  \end{eqnarray*}
+  
+  
+ 一个具有斜线表头的表格
+ \begin{center}
+\begin{tabular}{|c|c|c|} %------ 三列的列表，每列都居中对齐
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  \diagbox{$X$}{$Y$} & $a$ & $b$ \\
+  \hline
+    $c$ & 1   &0 \\
+   \hline
+  $d$ & 0 &1 \\
+  \hline
+\end{tabular}
+ \end{center}
+
+  
+\section{又一个一级标题 }
+
+下面是一个例
+\begin{example}
+  这是一个例子
+\end{example}
+
+
+
+
+%-------------------------------------
+\addcontentsline{toc}{section}{致谢} %---- 加入到目录中 -----
+\section*{\heiti\xiaosihao 致谢}
+
+本文的写作过程中,得到了李四老师的悉心指导与修改, 在此表示感谢.
+
+\addcontentsline{toc}{section}{参考文献}         %---- 将“参考文献”加入到目录中 ---
+\renewcommand\refname{\heiti \xiaosihao 参考文献}
+\begin{thebibliography}{100}
+\wuhao
+\bibitem{jiang-06}
+姜国. 正定矩阵的判定及性质[J]. 湖北师范学院学报(自然科学版), 2006(01): 97-100.
+
+\bibitem{LiLiqun-17}
+李立群. 正定矩阵及其应用[J]. 山东农业工程学院学报, 2017, 34(07): 28-30.
+
+\bibitem{Liang-Xu-Auto18}  
+Xiao Liang, JuanJuan Xu. Control for networked control systems with remote and local controllers over unreliable communication channel[J]. Automatica, 2018, 98(2018): 86-94.
+
+
+\end{thebibliography}
+
+
+
+
+
+
+\end{document} 
