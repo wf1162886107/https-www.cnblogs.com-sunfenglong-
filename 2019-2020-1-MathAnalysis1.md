@@ -1,0 +1,43 @@
+<table border="0">
+<tr>
+<td><a href="#lecture_info"> 课程信息 </a></td>
+<td><a href="#homework"> 作业 </a></td>
+<td><a href="#experience"> 经验与想法 </a></td>  
+</tr>
+</table>
+
+
+---
+## <a name="lecture_info"> 课程信息 </a>
+
+
+曲阜师范大学数学科学学院, 2020级信息与计算科学专业, [5-18周](http://jwc.qfnu.edu.cn/system/resource/storage/download.jsp?mark=MEUyNUFEODRERDc1RTU5RkRDRTlGNTYyMzI2QTE1MUEvMzYxQkU4MzAvNkMzQg== "校历"), 6课时/周, 共计84课时. 
+
+
+**教材**:
+ [数学分析(上册，第四版)](https://book.douban.com/subject/1160646/), 华东师范大学数学系 编, 高等教育出版社, 2010, ISBN:  9787040295665.
+
+**参考材料**: 
+[数学分析习题课讲义1](https://book.douban.com/subject/30437735/), 李傅山、王培合 编著, 北京大学出版社, 2018, ISBN: 9787301293331.
+ 
+**推荐参考材料**：
+    【1】[数学分析习题课讲义(上册，第2版)](https://book.douban.com/subject/30389024/),  谢惠民、恽自求等 编, 高等教育出版社，2018， ISBN: 9787040498516.
+    【2】[微积分学教程(第一卷，第8版)](https://book.douban.com/subject/1707158/),  [俄] 菲赫金哥尔茨 著, 杨弢亮、叶彦谦 译, 高等教育出版社, 2006, ISBN: 9787040183030.
+    【3】[数学分析原理(第3版)](https://book.douban.com/subject/1230288/), [美] Walter Rudin 著, 赵慈庚、蒋铎 译, 机械工业出版社, 2004, ISBN: 9787111134176.
+    【4】[微积分的历程：从牛顿到勒贝格](https://book.douban.com/subject/4904723/), [美] 威廉·邓纳姆 著, 李伯民等 译, 人民邮电出版社, 2010, ISBN: 9787115232175.
+
+
+---
+
+## <a name="homework"> 作业 </a>
+
+- 第4周
+
+---
+
+## <a name="experience"> 经验与想法 </a>
+
+- [AGM算法](http://calc.ac.cn/2017/12/25/agm_estimate/)
+
+
+---
