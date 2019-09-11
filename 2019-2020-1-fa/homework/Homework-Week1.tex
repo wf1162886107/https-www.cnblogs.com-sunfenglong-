@@ -1,0 +1,259 @@
+\documentclass[UTF8,oneside,12pt]{article}  %--- 单面打印用oneside，双面打印就改为twoside
+                                                                        %--- 12pt对应中文字号小四号
+\usepackage{ctex}
+%--- 可以用下面一命令代替上面两行 -----------
+%\documentclass[UTF8,oneside,12pt]{ctexart}   %-------ctex + article=ctexart
+%-----------------------------------------------
+
+
+%------- 一些常用数学宏包 --------------------------
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{dsfont}
+%------------------------------------------------------
+\usepackage[colorlinks,linkcolor=red,anchorcolor=blue,citecolor=red]{hyperref}  %--- 超链接宏包
+\usepackage{cite}          %--- 引用宏包
+
+\usepackage{indentfirst}   %-- 首行缩进宏包
+\usepackage{array,tabularx}           %-- 列表宏包
+\usepackage{diagbox}      %-- 改宏包可用于制做有斜线表头的表格
+\usepackage{color}          %-- 颜色宏包
+\usepackage{graphicx}    %--- 插图宏包
+
+\usepackage{caption}      %--- 该宏包用来定制图表标题
+\captionsetup{font={footnotesize,bf}}  %-- 图表标题设置为小五号黑体
+
+
+%-------  geometry 宏包用来调整页面的页边距。默认的页面边距为A4标准。
+%\usepackage{geometry}
+
+%------  根据学校文件中的课程论文模板的实际情况，下面通过指定geometry 宏包的选项参数来自定义页面边距 ----------------
+\usepackage[
+  hoffset=5mm,%%装订线
+  left=2.5cm,      %% 左边距
+  right=2.5cm,     %% 右边距
+  top=2.5cm,       %% 上边距 包括页眉
+  bottom=2cm,    %% 下边距 包括页脚
+  headheight=0cm, %%页眉
+  footskip=1.0cm,  %% 页脚
+  paperwidth=21cm,
+  paperheight=29.7cm
+  ]{geometry}
+
+\def\baselinestretch{1}         %-- 行间距为1倍行间距
+%\setlength{\baselineskip}{20pt}  %-- 行间距为固定值20磅
+%\setlength{\parskip}{0.7ex plus0.3ex minus0.3ex} % 段落间距
+\allowdisplaybreaks[4]       %% 允许多行公式中间换页
+%--------------------------------
+
+
+
+%----------------------- 字体设置 ----------------------------------------
+\usepackage{fontspec}
+%\usepackage{xeCJK}             %--中文字体
+\usepackage{newtxtext}       %-- 设置文字部分的英文字体为 Times New Roman
+%\usepackage{newtxmath}    %-- 设置数学式中的英文字体为 Times New Roman
+%-----------------------------------------------
+%\setCJKmonofont{FZYTK.ttf}  %--方正姚体
+%\newcommand{\fangzhengyaoti}{\CJKfamily{FZYTK.ttf}}
+ \newcommand{\myfont}[1]{\setCJKfamilyfont{font}{#1}\CJKfamily{font}}
+
+
+%\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+%\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoyihao}{\fontsize{24pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+%\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+%\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+%-------------------------------------------------------------------------
+
+%---------------- 设置目录、标题 -------------------------------------
+\usepackage{titletoc,titlesec}
+
+\renewcommand{\contentsname}{{
+\begin{center}
+\sihao\heiti 目\ \ 录
+\end{center}
+}}
+\usepackage[titles]{tocloft}
+\renewcommand\cftsecdotsep{\cftdotsep}
+\renewcommand\cftsecleader{\cftdotfill{\cftsecdotsep}}
+
+\newcommand{\sectionname}{节}
+\titleformat{\section}[block]{\sihao\fangsong}{\thesection}{10pt}{}
+\titleformat{\subsection}[block]{\xiaosihao\heiti}{\thesubsection}{10pt}{}
+\titleformat{\subsubsection}[block]{\xiaosihao\fangsong}{\thesubsubsection}{10pt}{}
+%-- 下面设置各级标题左边以及与上下文内容的间距 ---
+\titlespacing{\section}{0pt}{0.6ex}{0.6ex}
+\titlespacing{\subsection}{0.5ex}{0.3ex}{0.3ex}
+\titlespacing{\subsubsection}{1ex}{0.3ex}{0.3ex}
+%------------------------------------------------------------------------
+
+
+
+%--------------- 设置定理环境 -----------------------------------------
+\newtheoremstyle{DingLi1}
+        {0.6ex plus 0.5ex minus .2ex}%上方的空行
+        {0.6ex plus 0.5ex minus .2ex}%下方的空行
+        {\kaishu}%内容字体
+        {}%缩进
+        {\heiti}%定理头部字体
+        {.}%定理头部后的标点
+        {1em}%定理头部后的空格
+        {}%定理头部的说明
+\theoremstyle{DingLi1}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{\hspace{2em}定理}[section]
+\newtheorem{definition}{\hskip 2em 定义}[section]
+\newtheorem{lemma}{\hskip 2em 引理}[section]
+\newtheorem{corollary}{\hskip 2em 推论}[section]
+\newtheorem{assumption}{\hskip 2em 条件}[section]
+\newtheorem{remark}{\hskip 2em 注}[section]
+\newtheorem{proposition}{\hskip 2em 命题}[section]
+\newtheorem{property}{\hskip 2em 性质}[section]
+
+\newtheoremstyle{DingLi2}
+        {1ex plus 0.5ex minus .2ex}%上方的空行
+        {1ex plus 0.5ex minus .2ex}%下方的空行
+        {\songti}%内容字体
+        {}%缩进
+        {\heiti\large\color{red} }%定理头部字体
+        {.}%定理头部后的标点
+        {1em}%定理头部后的空格
+        {}%定理头部的说明
+\theoremstyle{DingLi2}
+\newtheorem{example}{\hskip 2em 问题}[section]
+%---------------------------------------------------------------------
+
+%---------- 设置证明环境 ---------------------------------------------
+\makeatletter% amsthm: get rid of \itshape and \@addpunct{.}
+\renewenvironment{proof}[1][\proofname]{\par%
+\pushQED{\qed}%
+\normalfont \topsep6\p@\@plus6\p@\relax%
+\trivlist%
+\item[\hskip\labelsep%
+#1]\ignorespaces%
+}{%
+\popQED\endtrivlist\@endpefalse%
+}
+\makeatother
+\renewcommand{\proofname}{\heiti\large\color{blue} 证明}%注意字体的设置
+%---------------------------------------------------------------------
+
+%-------------- 自定义命令 ------------------------------
+\def\d{\mathop{}\!\mathrm{d}} %-- 一阶微分符号d
+\def\l{\lambda}\def\L{\Lambda}
+\def\D{\Delta}
+\def\de{\delta}
+\def\gm{\gamma}
+\def\a{\alpha}
+\def\b{\beta}
+\def\div{{\rm div}}
+%---------------------------------------------------------
+
+\begin{document}
+
+
+
+\title{ 泛函分析作业}
+\author{}
+\date{}
+\maketitle
+
+\section{第1周}
+
+\begin{definition}[等价距离] 设集合$X$上有两种距离：$d_1$, $d_2$. 如果$X$中按距离$d_1$收敛的点列$\{x_n\}$都在距离$d_2$下收敛于同一点, 并且按距离$d_2$收敛的点列$\{x_n\}$都在距离$d_1$下收敛于同一点, 即
+$$d_1(x_n,x)\to 0 \Longleftrightarrow d_2(x_n,x)\to 0,$$
+则称距离$d_1$和$d_2$等价.
+\end{definition}
+
+\begin{example}
+设$d(x,y)$是集合$X$上的距离, 令
+    $$\tilde{d}(x,y)=\frac{d(x,y)}{1+d(x,y)}.$$
+    证明: $\tilde{d}(x,y)$也是$X$上的距离, 并且$\tilde{d}$与$d$等价.
+\end{example}
+\begin{proof}
+显然, 对任意$x,y\in X$,
+    $$\tilde{d}(x,y)=\frac{d(x,y)}{1+d(x,y)}\in \Bbb{R}.$$
+    \begin{itemize}
+      \item[(i)]由距离$d(x,y)$的正定性可知$\tilde{d}(x,y)\geq 0$, 并且$\tilde{d}(x,y)=\frac{d(x,y)}{1+d(x,y)}=0$等价于$d(x,y)=0$, 进而等价于$x=y$.
+      \item[(ii)]由距离$d(x,y)$ 的三点不等式可知，对任意$x,y,z\in X$, 总有
+          $$d(x,y)\leq d(x,z)+d(y,z),$$
+          从而, 根据函数
+    $$f(t)=\frac{t}{1+t},\quad t\in [0,+\infty)$$
+    的单调递增性, 就有
+    $$
+    \begin{array}{rcl}
+    \tilde{d}(x,y)=\frac{d(x,y)}{1+d(x,y)}&\leq&\frac{d(x,z)+d(y,z)}{1+d(x,z)+d(y,z)}\\
+    &=&\frac{d(x,z)}{1+d(x,z)+d(y,z)}+\frac{d(y,z)}{1+d(x,z)+d(y,z)}\\
+    &\leq&\frac{d(x,z)}{1+d(x,z)}+\frac{d(y,z)}{1+d(y,z)}\\
+    &=&\tilde{d}(x,z) +\tilde{d}(y,z).
+    \end{array}
+    $$
+    \end{itemize}
+综上, $\tilde{d}(x,y)$也是空间$X$上的距离.
+
+注意到
+    $$0\leq \tilde{d}(x,y)=\frac{d(x,y)}{1+d(x,y)}<1,$$
+于是
+\begin{equation}\label{w1-1}
+d(x,y) =\frac{\tilde{d}(x,y)}{1-\tilde{d}(x,y)}.
+\end{equation}
+若点列$\{x_n\}\subset X$和点$x\in X$满足
+    $$d(x_n,x)\to 0 \quad (n\to \infty),$$
+则根据数列极限的四则运算法则, 就有
+    $$\tilde{d}(x_n,x)=\frac{d(x_n,x)}{1+d(x_n,x)}\to 0\quad (n\to\infty).$$
+若点列$\{x_n\}\subset X$和点$x\in X$满足
+    $$\tilde{d}(x_n,x)\to 0 \quad (n\to \infty),$$
+同样根据(\ref{w1-1})式以及数列极限的四则运算法则, 就有
+    $${d}(x_n,x)=\frac{\tilde{d}(x_n,x)}{1-\tilde{d}(x_n,x)}\to 0\quad (n\to\infty).$$
+所以距离$d$和$\tilde{d}$等价.
+\end{proof}
+
+\begin{remark}上述距离空间$(X,\tilde{d})$中任何两点的距离都小于1, 从而任何子集都是有界集. 上述结论说明, 任何距离空间上$(X,d)$上都能够找到与$d$等价的"有界"距离$\tilde{d}$.
+\end{remark}
+
+
+\begin{example}
+在$\Bbb{R}^N$中可定义两种距离：
+    $$d_1(x,y)=\sqrt{\sum_{i=1}^N \left|\xi_i-\eta_i\right|^2},$$
+    $$d_2(x,y)=\max_{1\leq i\leq N}\left|\xi_i-\eta_i\right|,$$
+    其中$x=(\xi_1,\xi_2,\cdots,\xi_N)\in \Bbb{R}^N,$ $y=(\eta_1,\eta_2,\cdots,\eta_N)\in \Bbb{R}^N.$ 证明：$d_1$和$d_2$等价.
+\end{example}
+
+
+\begin{proof}
+对任意$x=(\xi_1,\xi_2,\cdots,\xi_N)\in \Bbb{R}^N,$ $y=(\eta_1,\eta_2,\cdots,\eta_N)\in \Bbb{R}^N,$ 都有
+    $$\max_{1\leq i\leq N} |\xi_i-\eta_i|^2\leq \sum_{i=1}^N |\xi_i-\eta_i|^2 \leq N\max_{1\leq i\leq N}|\xi_i-\eta_i|^2,$$
+    从而
+    $$\max_{1\leq i\leq N} |\xi_i-\eta_i|\leq \sqrt{\sum_{i=1}^N |\xi_i-\eta_i|^2}\leq \sqrt{N} \max_{1\leq i\leq N} |\xi_i-\eta_i|,$$
+   即
+    $$d_2(x,y)\leq d_1(x,y)\leq \sqrt{N} d_2(x,y).\label{w1-2}$$
+若点列$\{x_n\}\subset \Bbb{R}^N$和点$x\in \Bbb{R}^N$满足
+    $$d_1(x_n,x)\to 0 \quad (n\to \infty),$$
+由(\ref{w1-2})式的前半部分以及数列极限的迫敛性可知
+$$d_2(x_n,x)\to 0 \quad (n\to \infty).$$
+若点列$\{x_n\}\subset \Bbb{R}^N$和点$x\in \Bbb{R}^N$满足
+    $$d_2(x_n,x)\to 0 \quad (n\to \infty),$$
+由(\ref{w1-2})式的后半部分以及数列极限的迫敛性可知
+$$d_1(x_n,x)\to 0 \quad (n\to \infty).$$
+综上, $d_1$和$d_2$等价.
+\end{proof}
+
+
+\begin{remark}
+ 若距离空间$X$上的两种距离$d_1$和$d_2$满足
+    $$C_1 d_1(x,y)\leq d_2(x,y)\leq C_2 d_1(x,y),\quad \forall x,y\in X,$$
+    其中$C_1,\,C_2>0$是正的常数, 则$d_1$与$d_2$一定等价.
+\end{remark}
+
+\end{document}
