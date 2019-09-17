@@ -1,0 +1,340 @@
+\documentclass[UTF8,oneside,12pt]{article}  %--- 单面打印用oneside，双面打印就改为twoside
+                                                                        %--- 12pt对应中文字号小四号
+\usepackage{ctex}
+%--- 可以用下面一命令代替上面两行 -----------
+%\documentclass[UTF8,oneside,12pt]{ctexart}   %-------ctex + article=ctexart
+%-----------------------------------------------
+
+
+%------- 一些常用数学宏包 --------------------------
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{dsfont}
+%------------------------------------------------------
+\usepackage[colorlinks,linkcolor=red,anchorcolor=blue,citecolor=red]{hyperref}  %--- 超链接宏包
+\usepackage{cite}          %--- 引用宏包
+
+\usepackage{indentfirst}   %-- 首行缩进宏包
+\usepackage{array,tabularx}           %-- 列表宏包
+\usepackage{diagbox}      %-- 改宏包可用于制做有斜线表头的表格
+\usepackage{color}          %-- 颜色宏包
+\usepackage{graphicx}    %--- 插图宏包
+
+\usepackage{caption}      %--- 该宏包用来定制图表标题
+\captionsetup{font={footnotesize,bf}}  %-- 图表标题设置为小五号黑体
+
+
+%-------  geometry 宏包用来调整页面的页边距。默认的页面边距为A4标准。
+%\usepackage{geometry}
+
+%------  根据学校文件中的课程论文模板的实际情况，下面通过指定geometry 宏包的选项参数来自定义页面边距 ----------------
+\usepackage[
+  hoffset=5mm,%%装订线
+  left=2.5cm,      %% 左边距
+  right=2.5cm,     %% 右边距
+  top=2.5cm,       %% 上边距 包括页眉
+  bottom=2cm,    %% 下边距 包括页脚
+  headheight=0cm, %%页眉
+  footskip=1.0cm,  %% 页脚
+  paperwidth=21cm,
+  paperheight=29.7cm
+  ]{geometry}
+
+\def\baselinestretch{1}         %-- 行间距为1倍行间距
+%\setlength{\baselineskip}{20pt}  %-- 行间距为固定值20磅
+%\setlength{\parskip}{0.7ex plus0.3ex minus0.3ex} % 段落间距
+\allowdisplaybreaks[4]       %% 允许多行公式中间换页
+%--------------------------------
+
+
+
+%----------------------- 字体设置 ----------------------------------------
+\usepackage{fontspec}
+%\usepackage{xeCJK}             %--中文字体
+\usepackage{newtxtext}       %-- 设置文字部分的英文字体为 Times New Roman
+%\usepackage{newtxmath}    %-- 设置数学式中的英文字体为 Times New Roman
+%-----------------------------------------------
+%\setCJKmonofont{FZYTK.ttf}  %--方正姚体
+%\newcommand{\fangzhengyaoti}{\CJKfamily{FZYTK.ttf}}
+ \newcommand{\myfont}[1]{\setCJKfamilyfont{font}{#1}\CJKfamily{font}}
+
+
+%\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+%\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoyihao}{\fontsize{24pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+%\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+%\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+%-------------------------------------------------------------------------
+
+%---------------- 设置目录、标题 -------------------------------------
+\usepackage{titletoc,titlesec}
+
+\renewcommand{\contentsname}{{
+\begin{center}
+\sihao\heiti 目\ \ 录
+\end{center}
+}}
+\usepackage[titles]{tocloft}
+\renewcommand\cftsecdotsep{\cftdotsep}
+\renewcommand\cftsecleader{\cftdotfill{\cftsecdotsep}}
+
+\newcommand{\sectionname}{节}
+\titleformat{\section}[block]{\sihao\fangsong}{\thesection}{10pt}{}
+\titleformat{\subsection}[block]{\xiaosihao\heiti}{\thesubsection}{10pt}{}
+\titleformat{\subsubsection}[block]{\xiaosihao\fangsong}{\thesubsubsection}{10pt}{}
+%-- 下面设置各级标题左边以及与上下文内容的间距 ---
+\titlespacing{\section}{0pt}{0.6ex}{0.6ex}
+\titlespacing{\subsection}{0.5ex}{0.3ex}{0.3ex}
+\titlespacing{\subsubsection}{1ex}{0.3ex}{0.3ex}
+%------------------------------------------------------------------------
+
+
+
+%--------------- 设置定理环境 -----------------------------------------
+\newtheoremstyle{DingLi1}
+        {0.6ex plus 0.5ex minus .2ex}%上方的空行
+        {0.6ex plus 0.5ex minus .2ex}%下方的空行
+        {\kaishu}%内容字体
+        {}%缩进
+        {\heiti}%定理头部字体
+        {.}%定理头部后的标点
+        {1em}%定理头部后的空格
+        {}%定理头部的说明
+\theoremstyle{DingLi1}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{\hspace{2em}定理}[section]
+\newtheorem{definition}{\hskip 2em 定义}[section]
+\newtheorem{lemma}{\hskip 2em 引理}[section]
+\newtheorem{corollary}{\hskip 2em 推论}[section]
+\newtheorem{assumption}{\hskip 2em 条件}[section]
+\newtheorem{remark}{\hskip 2em 注}[section]
+\newtheorem{proposition}{\hskip 2em 命题}[section]
+\newtheorem{property}{\hskip 2em 性质}[section]
+
+\newtheoremstyle{DingLi2}
+        {1ex plus 0.5ex minus .2ex}%上方的空行
+        {1ex plus 0.5ex minus .2ex}%下方的空行
+        {\songti}%内容字体
+        {}%缩进
+        {\heiti\large\color{red} }%定理头部字体
+        {.}%定理头部后的标点
+        {1em}%定理头部后的空格
+        {}%定理头部的说明
+\theoremstyle{DingLi2}
+\newtheorem{example}{\hskip 2em 问题}[section]
+%---------------------------------------------------------------------
+
+%---------- 设置证明环境 ---------------------------------------------
+\makeatletter% amsthm: get rid of \itshape and \@addpunct{.}
+\renewenvironment{proof}[1][\proofname]{\par%
+\pushQED{\qed}%
+\normalfont \topsep6\p@\@plus6\p@\relax%
+\trivlist%
+\item[\hskip\labelsep%
+#1]\ignorespaces%
+}{%
+\popQED\endtrivlist\@endpefalse%
+}
+\makeatother
+\renewcommand{\proofname}{\heiti\large\color{blue} 证明}%注意字体的设置
+%---------------------------------------------------------------------
+
+%-------------- 自定义命令 ------------------------------
+\def\d{\mathop{}\!\mathrm{d}} %-- 一阶微分符号d
+\def\l{\lambda}\def\L{\Lambda}
+\def\D{\Delta}
+\def\de{\delta}
+\def\gm{\gamma}
+\def\a{\alpha}
+\def\b{\beta}
+\def\div{{\rm div}}
+%---------------------------------------------------------
+
+\begin{document}
+
+
+
+\title{ 泛函分析作业}
+\author{}
+\date{}
+\maketitle
+
+\section{第3周}
+
+\begin{example}
+设$(X,d)$是度量空间, $\{x_n\}$是$(X,d)$中的Cauchy点列, 证明: $\{x_n\}$收敛当且仅当$\{x_n\}$存在收敛子列.
+\end{example}
+
+\begin{proof}
+必要性是显然的.
+
+下证充分性. 设Cauchy点列$\{x_n\}$存在收敛子列$\{x_{n_k}\}$使得$x_{n_k}\to x$ $(k\to \infty)$.任取$\epsilon>0$. 一方面, 由于$\{x_n\}$是Cauchy点列, 则存在$N=N(\epsilon)\in \Bbb{N}_+$, 使得
+\begin{equation}\label{3.1-1}
+d(x_n, x_m)<\frac12 \epsilon,\quad \forall m,n>N.
+\end{equation}
+另一方面, 由于$x_{n_k}\to x$ $(k\to \infty)$, 则存在$K=K(\epsilon)\in \Bbb{N}_+$使得
+\begin{equation}\label{3.1-2}
+n_k >N\quad\text{并且}\quad d(x_{n_k},x) <\frac12 \epsilon,\quad \forall k>K.
+\end{equation}
+
+
+综上, 由(\ref{3.1-1})-(\ref{3.1-2})式, 对任意$n>N$, 取$k=K+1$, 就有
+\begin{eqnarray*}
+d(x_n ,x)\leq d(x_n,x_{n_k})+d(x_{n_k}, x)<\frac12 \epsilon+\frac12 \epsilon=\epsilon,
+\end{eqnarray*}
+所以$x_n\to x$ $(n\to \infty)$.
+\end{proof}
+
+\begin{example}
+设$f$是度量空间$(X,d)$到$\Bbb{R}$的连续映射, $M$是$X$中的紧集, 证明: 连续映射$f$在紧集$M$上能够取到最值, 即存在$x_0,x_1\in M$使得
+$$f(x_0)=\min_{x\in M}f(x),\quad f(x_1)=\max_{x\in M}f(x).$$
+\end{example}
+\begin{proof}
+Step1. 设
+$$l=\inf_{x\in M}f(x).$$
+下证$l\in \Bbb{R}$.
+
+反证法, 假设$l=-\infty$, 则对任意$n\in \Bbb{N}_+$, 存在$x_n\in M$使得
+\begin{equation*}
+f(x_n)<-n,
+\end{equation*}
+于是
+\begin{equation}\label{3.2-1}
+f(x_n)\to -\infty\quad (n\to \infty).
+\end{equation}
+另一方面, 由于$\{x_n\}\subset M$并且$M$是紧集, 则存在$\{x_n\}$的子列$\{x_{n_k}\}$以及$x\in M$使得
+$$x_{n_k}\to x\quad (k\to \infty).$$
+根据映射$f$的连续性, 就有
+$$f(x_{n_k})\to f(x)\in \Bbb{R}\quad (k\to \infty).$$
+这与(\ref{3.2-1})式矛盾. 所以$l\in \Bbb{R}$.
+
+Step2. 根据下确界的定义, 存在$\{x_n\}\subset M$(称为极小化序列)使得
+$$f(x_n)\to l\quad (n\to \infty).$$
+由于$M$是紧集, 则存在$\{x_n\}$的子列$\{x_{n_k}\}$以及$x\in M$使得
+$$x_{n_k}\to x\quad (k\to \infty).$$
+根据映射$f$的连续性, 就有
+$$\inf_{x\in M}f(x)=l=\lim_{n\to \infty}f(x_n)=\lim_{k\to \infty}f(x_{n_k})=f\left(\lim_{k\to \infty} x_{n_k}\right)=f(x).$$
+所以连续映射$f$在紧集$M$上可以取到最小值.
+
+同理可证, 连续映射$f$在紧集$M$上可以取到最大值.
+\end{proof}
+
+
+\begin{example}
+\begin{definition}[H\"{o}lder连续函数]设$\alpha\in (0,1]$. 若$f\in C[a,b]$满足
+$$[f]_\alpha=\sup_{\substack{x,y\in[a,b],\\ x\neq y}}\frac{|f(x)-f(y)|}{|x-y|^\alpha}<+\infty,$$
+则称$f$是$[a,b]$上具有指数$\alpha$的H\"{o}lder连续函数. $C[a,b]$中所有具有指数$\alpha$的H\"{o}lder连续函数的全体记为$C^{0,\alpha}[a,b]$.
+\end{definition}
+\begin{itemize}
+  \item[(1)]令
+    $$\bar{d}(f,g)=\max_{t\in [a,b]}|f(t)-g(t)|+[f-g]_{\alpha}, \quad\forall f,g\in C^{0,\alpha}[a,b], $$
+    证明$(C^{0,\alpha}[a,b],\bar{d})$是一个度量空间.
+  \item[(2)] 证明$(C^{0,\alpha}[a,b],\bar{d})$是完备的度量空间.
+  \item[(3)] 利用Ascoli-Arezela定理证明, 若$M$是$(C^{0,\alpha}[a,b],\bar{d})$中的有界集, 则$M$是$(C[a,b],d)$中的列紧集, 其中$d$是最大值距离, 即
+    $$d(f,g)=\max_{t\in [a,b]}|f(t)-g(t)|,\quad \forall f,g\in C[a,b].$$
+\end{itemize}
+\end{example}
+\begin{proof}
+(1) 任取$f,g\in C^{0,\alpha}[a,b]$, 对任意$x,y\in [a,b]$且$x\neq y$, 都有
+\begin{eqnarray*}
+&&\frac{|(f-g)(x)-(f-g)(y)|}{|x-y|^\alpha} \\
+&\leq& \frac{|f(x)-f(y)|}{|x-y|^\alpha}+\frac{|g(x)-g(y)|}{|x-y|^\alpha}\\
+&\leq &[f]_{\alpha}+[g]_{\alpha}<+\infty,
+\end{eqnarray*}
+从而
+$$[f-g]_{\alpha}=\sup_{\substack{x,y\in[a,b],\\ x\neq y}}\frac{|(f-g)(x)-(f-g)(y)|}{|x-y|^\alpha}\leq [f]_{\alpha}+[g]_{\alpha}<+\infty.$$
+所以$\bar{d}(f,g)$的定义是合理的.
+\begin{itemize}
+  \item[(i)]显然$\bar{d}(f,g)\geq 0$. 由于$d(f,g)\leq \bar{d}(f,g)$, 根据$d(f,g)$的正定性可知, $\bar{d}(f,g)=0$等价于
+      $$f(t)=g(t),\quad \forall t\in [a,b],$$
+      从而等价于$f=g$.
+      \item[(ii)]设$f,g,h\in C^{0,\alpha}[a,b]$, 则
+      $$d(f,g)\leq d(f,h)+d(h,g).$$
+      另一方面, 对任意$x,y\in [a,b]$且$x\neq y$, 都有
+      \begin{eqnarray*}
+      &&\frac{|(f-g)(x)-(f-g)(y)|}{|x-y|^\alpha}\\
+      &=&\frac{\big|[(f-h)+(h-g)](x)-[(f-h)+(h-g)](y)\big|}{|x-y|^\alpha}\\
+      &\leq&\frac{|(f-h)(x)-(f-h)(y)|}{|x-y|^\alpha}+\frac{|(h-g)(x)-(h-g)(y)|}{|x-y|^\alpha},
+      \end{eqnarray*}
+      从而
+      $$[f-g]_{\alpha}\leq [f-h]_{\alpha}+[h-g]_{\alpha}.$$
+      综上,
+      $$\bar{d}(f,g)\leq \bar{d}(f,g)+\bar{d}(h,g).$$
+\end{itemize}
+所以$(C^{0,\alpha}[a,b],\bar{d})$是一个度量空间.
+
+(2) 设$\{f_n\}$是空间$(C^{0,\alpha}[a,b],\bar{d})$中的Cauchy点列. 由于$C^{0,\alpha}[a,b]\subset C[a,b]$并且
+$$0\leq d(f,g)\leq  \bar{d}(f,g), \quad\forall f,g\in C^{0,\alpha}[a,b],$$
+易证$\{f_n\}$也是$(C[a,b],d)$中的Cauchy点列. 根据$(C[a,b],d)$的完备性, 存在$f\in C[a,b]$使得
+$$d(f_n,f)\to 0\quad (n\to \infty).$$
+下证$f\in C^{0,\alpha}[a,b]$并且
+$$\bar{d}(f_n,f)\to 0\quad (n\to \infty).$$
+
+由于$\{f_n\}$是空间$(C^{0,\alpha}[a,b],\bar{d})$中的Cauchy点列, 从而是$(C^{0,\alpha}[a,b],\bar{d})$中的有界点列(p219第14题), 于是存在$M>0$使得对任意$x,y\in [a,b]$并且$x\neq y$都有
+\begin{equation}\label{3.3-1}
+\frac{|f_n(x)-f_n(y)|}{|x-y|^\alpha}\leq [f_n]_\alpha =[f_n-0]_\alpha \leq \bar{d}(f_n,0)\leq M,\quad \forall n\in \Bbb{N}_+.
+\end{equation}
+由于函数列$\{f_n\}$在$[a,b]$上一致收敛于$f$, 那么也逐点收敛于$f$, 即对任意$x\in [a,b]$, 都有
+\begin{equation}\label{3.3-2}
+f_n(x)\to f(x)\quad (n\to \infty).
+\end{equation}
+因此, 在(\ref{3.3-1})两端令$n\to \infty$, 可得
+$$\frac{|f(x)-f(y)|}{|x-y|^\alpha}\leq M,\quad \forall x,y\in [a,b],\,x\neq y,$$
+从而$[f]_\alpha <+\infty$, $f\in C^{0,\alpha}[a,b]$.
+
+对任意$\epsilon>0$, 由于$\{f_n\}$是空间$(C^{0,\alpha}[a,b],\bar{d})$中的Cauchy点列, 则存在正整数$N$, 使得对任意$m,n>N$, 都有
+\begin{equation*}
+\frac{\big|[f_n(x)-f_m(x)]-[f_n(y)-f_m(y)]\big|}{|x-y|^\alpha}\leq [f_n-f_m]_\alpha \leq \bar{d}(f_n,f_m)<\epsilon,\quad \forall x,y\in [a,b],\,x\neq y.
+\end{equation*}
+在上式中固定$x,y$以及$n>N$, 令$m\to\infty$, 结合(\ref{3.3-2})式可得
+\begin{equation*}
+\frac{\big|[f_n(x)-f(x)]-[f_n(y)-f(y)]\big|}{|x-y|^\alpha}\leq \epsilon,\quad \forall n\geq N,\ \forall x,y\in [a,b],\,x\neq y,
+\end{equation*}
+所以
+\begin{equation*}
+  [f_n-f]_\alpha\leq \epsilon, \forall n>N.
+\end{equation*}
+综上
+$$[f_n-f]_\alpha\to 0\quad (n\to \infty),$$
+从而
+$$\bar{d}(f_n,f)=d(f_n,f)+[f_n-f]_\alpha\to 0\quad(n\to \alpha).$$
+所以$(C^{0,\alpha}[a,b],\bar{d})$是完备的度量空间.
+
+
+
+(3) 设$M$在$(C^{0,\alpha}[a,b],\bar{d})$中有界. 由于$C^{0,\alpha}[a,b]\subset C[a,b]$并且
+$$0\leq d(f,g)\leq  \bar{d}(f,g), \quad\forall f,g\in C^{0,\alpha}[a,b],$$
+所以$M$也在$(C[a,b],d)$中有界. 任取$\{f_n\}\subset M$, 则$\{f_n\}$既是$(C^{0,\alpha}[a,b],\bar{d})$中的有界点列, 又是$(C[a,b],d)$中的有界点列, 从而函数列$\{f_n\}$在$[a,b]$上一致有界. 下证函数列$\{f_n\}$在$[a,b]$上
+等度连续.
+
+由于$\{f_n\}$是$(C^{0,\alpha}[a,b],\bar{d})$中的有界点列, 则存在$M>0$, 使得
+\begin{equation*}
+[f_n]_\alpha =[f_n-0]_\alpha \leq \bar{d}(f_n,0)\leq M.
+\end{equation*}
+从而
+\begin{equation}\label{3.3-3}
+|f_n(x)-f_n(y)|\leq M |x-y|^\alpha,\quad \forall n\in \Bbb{N}_+,\ \forall x,y\in [a,b].
+\end{equation}
+对任意$\epsilon>0$, 取
+$$\delta=\left(\frac{\epsilon}{M}\right)^{\frac{1}{\alpha}}>0,$$
+则对任意$x,y\in [a,b]$且$|x-y|<\delta$, 根据$\alpha\in (0,1]$以及\eqref{3.3-3}式可得
+$$|f_n(x)-f_n(y)|\leq M |x-y|^\alpha<M\delta^\alpha=\epsilon,$$
+因此函数列$\{f_n\}$在$[a,b]$上等度连续.
+
+根据Ascoli-Arezela定理, 点列$\{f_n\}$在空间$(C[a,b],d)$中有收敛子列, 由此可知集合$M$是空间$(C[a,b],d)$中的列紧集.\\
+\textcolor[rgb]{1.00,0.00,0.00}{由于$\{f_n\}$是$(C^{0,\alpha}[a,b],\bar{d})$中的有界点列, 根据(2)的证明的前半部分可知, 上述收敛子列$\{f_{n_k}\}$的极限$f$也在$C^{0,\alpha}[a,b]$中. 然而, 虽然$\{f_{n_k}\}$在$(C[a,b],d)$中收敛, 但是却不能保证$\{f_{n_k}\}$是$(C^{0,\alpha}[a,b],\bar{d})$)的Cauchy点列, 因此我们无法像(2)的证明的后半部分那样证明
+$$\left[f_{n_k}-f\right]_\alpha \to 0\quad (k\to \infty).$$}
+\end{proof}
+
+
+\end{document}
