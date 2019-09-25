@@ -1,0 +1,278 @@
+\documentclass[UTF8,oneside,12pt]{article}  %--- 单面打印用oneside，双面打印就改为twoside
+                                                                        %--- 12pt对应中文字号小四号
+\usepackage{ctex}
+%--- 可以用下面一命令代替上面两行 -----------
+%\documentclass[UTF8,oneside,12pt]{ctexart}   %-------ctex + article=ctexart
+%-----------------------------------------------
+
+
+%------- 一些常用数学宏包 --------------------------
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{dsfont}
+%------------------------------------------------------
+\usepackage[colorlinks,linkcolor=red,anchorcolor=blue,citecolor=red]{hyperref}  %--- 超链接宏包
+\usepackage{cite}          %--- 引用宏包
+
+\usepackage{indentfirst}   %-- 首行缩进宏包
+\usepackage{array,tabularx}           %-- 列表宏包
+\usepackage{diagbox}      %-- 改宏包可用于制做有斜线表头的表格
+\usepackage{color}          %-- 颜色宏包
+\usepackage{graphicx}    %--- 插图宏包
+
+\usepackage{caption}      %--- 该宏包用来定制图表标题
+\captionsetup{font={footnotesize,bf}}  %-- 图表标题设置为小五号黑体
+
+
+%-------  geometry 宏包用来调整页面的页边距。默认的页面边距为A4标准。
+%\usepackage{geometry}
+
+%------  根据学校文件中的课程论文模板的实际情况，下面通过指定geometry 宏包的选项参数来自定义页面边距 ----------------
+\usepackage[
+  hoffset=5mm,%%装订线
+  left=2.5cm,      %% 左边距
+  right=2.5cm,     %% 右边距
+  top=2.5cm,       %% 上边距 包括页眉
+  bottom=2cm,    %% 下边距 包括页脚
+  headheight=0cm, %%页眉
+  footskip=1.0cm,  %% 页脚
+  paperwidth=21cm,
+  paperheight=29.7cm
+  ]{geometry}
+
+\def\baselinestretch{1}         %-- 行间距为1倍行间距
+%\setlength{\baselineskip}{20pt}  %-- 行间距为固定值20磅
+%\setlength{\parskip}{0.7ex plus0.3ex minus0.3ex} % 段落间距
+\allowdisplaybreaks[4]       %% 允许多行公式中间换页
+%--------------------------------
+
+
+
+%----------------------- 字体设置 ----------------------------------------
+\usepackage{fontspec}
+%\usepackage{xeCJK}             %--中文字体
+\usepackage{newtxtext}       %-- 设置文字部分的英文字体为 Times New Roman
+%\usepackage{newtxmath}    %-- 设置数学式中的英文字体为 Times New Roman
+%-----------------------------------------------
+%\setCJKmonofont{FZYTK.ttf}  %--方正姚体
+%\newcommand{\fangzhengyaoti}{\CJKfamily{FZYTK.ttf}}
+ \newcommand{\myfont}[1]{\setCJKfamilyfont{font}{#1}\CJKfamily{font}}
+
+
+%\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+%\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoyihao}{\fontsize{24pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+%\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+%\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+%-------------------------------------------------------------------------
+
+%---------------- 设置目录、标题 -------------------------------------
+\usepackage{titletoc,titlesec}
+
+\renewcommand{\contentsname}{{
+\begin{center}
+\sihao\heiti 目\ \ 录
+\end{center}
+}}
+\usepackage[titles]{tocloft}
+\renewcommand\cftsecdotsep{\cftdotsep}
+\renewcommand\cftsecleader{\cftdotfill{\cftsecdotsep}}
+
+\newcommand{\sectionname}{节}
+\titleformat{\section}[block]{\sihao\fangsong}{\thesection}{10pt}{}
+\titleformat{\subsection}[block]{\xiaosihao\heiti}{\thesubsection}{10pt}{}
+\titleformat{\subsubsection}[block]{\xiaosihao\fangsong}{\thesubsubsection}{10pt}{}
+%-- 下面设置各级标题左边以及与上下文内容的间距 ---
+\titlespacing{\section}{0pt}{0.6ex}{0.6ex}
+\titlespacing{\subsection}{0.5ex}{0.3ex}{0.3ex}
+\titlespacing{\subsubsection}{1ex}{0.3ex}{0.3ex}
+%------------------------------------------------------------------------
+
+
+
+%--------------- 设置定理环境 -----------------------------------------
+\newtheoremstyle{DingLi1}
+        {0.6ex plus 0.5ex minus .2ex}%上方的空行
+        {0.6ex plus 0.5ex minus .2ex}%下方的空行
+        {\kaishu}%内容字体
+        {}%缩进
+        {\heiti}%定理头部字体
+        {.}%定理头部后的标点
+        {1em}%定理头部后的空格
+        {}%定理头部的说明
+\theoremstyle{DingLi1}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{\hspace{2em}定理}[section]
+\newtheorem{definition}{\hskip 2em 定义}[section]
+\newtheorem{lemma}{\hskip 2em 引理}[section]
+\newtheorem{corollary}{\hskip 2em 推论}[section]
+\newtheorem{assumption}{\hskip 2em 条件}[section]
+\newtheorem{remark}{\hskip 2em 注}[section]
+\newtheorem{proposition}{\hskip 2em 命题}[section]
+\newtheorem{property}{\hskip 2em 性质}[section]
+
+\newtheoremstyle{DingLi2}
+        {1ex plus 0.5ex minus .2ex}%上方的空行
+        {1ex plus 0.5ex minus .2ex}%下方的空行
+        {\songti}%内容字体
+        {}%缩进
+        {\heiti\large\color{red} }%定理头部字体
+        {.}%定理头部后的标点
+        {1em}%定理头部后的空格
+        {}%定理头部的说明
+\theoremstyle{DingLi2}
+\newtheorem{example}{\hskip 2em 问题}[section]
+%---------------------------------------------------------------------
+
+%---------- 设置证明环境 ---------------------------------------------
+\makeatletter% amsthm: get rid of \itshape and \@addpunct{.}
+\renewenvironment{proof}[1][\proofname]{\par%
+\pushQED{\qed}%
+\normalfont \topsep6\p@\@plus6\p@\relax%
+\trivlist%
+\item[\hskip\labelsep%
+#1]\ignorespaces%
+}{%
+\popQED\endtrivlist\@endpefalse%
+}
+\makeatother
+\renewcommand{\proofname}{\heiti\large\color{blue} 证明}%注意字体的设置
+%---------------------------------------------------------------------
+
+%-------------- 自定义命令 ------------------------------
+\def\d{\mathop{}\!\mathrm{d}} %-- 一阶微分符号d
+\def\l{\lambda}\def\L{\Lambda}
+\def\D{\Delta}
+\def\de{\delta}
+\def\gm{\gamma}
+\def\a{\alpha}
+\def\b{\beta}
+\def\div{{\rm div}}
+%---------------------------------------------------------
+
+\begin{document}
+
+
+
+\title{ 泛函分析作业}
+\author{}
+\date{}
+\maketitle
+
+\section{第4周}
+\begin{example}
+设$X$是完备的度量空间, $T$是$X$到$X$中的映射, 如果存在正整数$m\in \Bbb{N}_+$以及常数     $\alpha \in [0,1)$使得对所有的$x,y\in X$, 都有
+$$d(T^m x, T^m y)\leq \alpha \,d(x,y),$$
+其中$T^m$表示映射$T$作用$m$次, 则$T$在$X$中有且只有一个不动点$x^*$, 特别地, 迭代点列
+$$x_0,\ x_1=Tx_0,\cdots,x_n=Tx_{n-1},\cdots,$$
+在$(X,d)$中收敛于不动点$x^*$.
+\end{example}
+\begin{proof}
+由条件可知映射$T^m:X\to X$是压缩映射, 由于$X$完备, 根据压缩映射原理, $T^m$在$X$上存在唯一的不动点$x^*$, 即
+\begin{equation}\label{4.2-1}
+x^*=T^m x^*.
+\end{equation}
+下证$x^*$也是映射$T$在$X$上的唯一的不动点.
+
+由\eqref{4.2-1}式可得
+$$T x^* =T\left(T^m x^*\right)=T^{m+1} x^*=T^m \left(T x^*\right),$$
+所以$T x^*$也是$T^m$的不动点. 根据$T^m$的不动点的唯一性, 就有
+$T x^*=x^*$, 所以$x^*$也是映射$T$的不动点. 若$x\in X$也是映射$T$的不动点, 则
+$$x=Tx, \ x=Tx=T(Tx)=T^2 x,\cdots, x=T^m x,$$
+即$x$也是$T^m$的不动点. 根据$T^m$的不动点的唯一性, 就有$x^*=x$. 所以$x^*$是映射$T$在$X$上的唯一的不动点.
+
+任取$x_0\in X$. 通过映射$T$构造迭代点列
+$$x_0, \ x_1=Tx_0,\ x_2=Tx_1,\cdots,x_n=T x_{n-1},\cdots.$$
+任取
+$$s\in \{0,1,2,\cdots,m-1\},$$
+令
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  &&y_0= T^s x_0=x_s, \\
+  &&y_1=T^m y_0=x_{m+2},\\
+  &&y_2=T^m y_1=x_{2m+s},\\
+  &&\cdots,\\
+  &&y_n=T^m y_{n-1}=x_{nm+s},\\
+  &&\cdots.
+\end{eqnarray*}
+根据由于$T^m$是压缩映射, $X$完备, 则迭代点列$y_n$收敛于$T^m$的不动点$x^*$, 即
+$$\lim_{n\to \infty}x_{nm+s} = x^*,\quad \forall s \in \{0,1,2,\cdots,m-1\}.$$
+于是对任意$\epsilon>0$, 以及任意$s\in \{ 0,1,2,\cdots,m-1\}$, 邻域$U\left(x^*,\epsilon\right)$之外只含有点列$\{x_{nm+s}\}_{n=0}^\infty$中的有限多项, 将这些项的集合记为$A_s$. 由于
+$$ \bigcup_{s=0}^{m-1}\bigcup_{n=0}^\infty \{x_{nm+s}\}=\bigcup_{n=0}^\infty \bigcup_{s=0}^{m-1} \{x_{nm+s}\}=\bigcup_{n=0}^\infty\{x_n\},$$
+于是点列$\{x_n\}$在邻域$U\left(x^*,\epsilon\right)$之外的项的全体为有限集
+$$\bigcup_{s=0}^{m-1}A_s,$$
+所以
+$$\lim_{n\to \infty}x_n =x^*.$$
+\end{proof}
+
+\begin{remark}
+该题中的映射$T$自身不一定是压缩映射.
+ 证明过程后半部分用到了点列收敛的另外一种等价定义:
+  \begin{quote}
+  任给$\epsilon>0$, 若点列$\{x_n\}$在邻域$U(x,\epsilon)$之外至多只有有限多项, 则称点列$\{x_n\}$收敛于$x$.
+  \end{quote}
+点列极限与其子列极限的转化思路, 可参考华东师大《数学分析（第四版·上册）》P27例8和P35-P36习题7(2)的证明.
+\end{remark}
+
+\begin{example}[Volterra型线性积分方程解的存在唯一性问题] 设$f\in C[a,b]$, 二元函数$k(t,s)$在$[a,b]\times[a,b]$上连续. 利用上题的结论证明, 对任意$\lambda\in\Bbb{R}$, 积分方程
+\begin{equation}\label{Volterra-1}
+\phi(t)-\lambda \int_0^t k(t,s)\phi(s)\d s=f(t),\quad t\in [a,b]
+\end{equation}
+总存在唯一的连续函数解$\phi\in C[a,b]$.
+\end{example}
+
+\begin{proof}
+任取$\phi\in C[a,b]$, 定义$[a,b]$上的函数$T\phi$:
+\begin{equation}\label{4.3-1}
+(T\phi)(t)=f(t)+\lambda \int_a^t k(t,s)\phi(s) \d s,\quad t\in [a,b].
+\end{equation}
+由于$\phi,f\in C[a,b]$, $k(t,s)$在$[a,b]\times [a,b]$上连续, 由上式可知$T\phi\in C[a,b]$. 由此得到映射
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  T:\ C[a,b] &\to &C[a,b],\\
+  \phi&\mapsto & T\phi.
+\end{eqnarray*}
+显然, 积分方程\eqref{Volterra-1}在$[a,b]$上的连续函数解等价于映射$T$在空间$C[a,b]$中的不动点.
+
+(下面验证$T$是否是压缩映射, 若不是, 继续验证$T^m$是否是压缩映射)
+
+对任意$\phi_1,\phi_2\in C[a,b]$以及任意$t\in [a,b]$, 由\eqref{4.3-1}可得
+\begin{eqnarray*}
+&&\left|(T\phi_1)(t)-(T\phi_2)(t)  \right|\\
+&=&|\lambda|\cdot\left| \int_a^t k(t,s)\left[\phi_1(s)-\phi_2(s)\right] \d s\right|\\
+&\leq &|\lambda|\cdot \int_a^t \max_{\substack{a\leq t\leq b\\a\leq s\leq  b}}|k(t,s)|\cdot \max_{t\in [a,b]}\left|\phi_1(s)-\phi_2(s)\right| \d s\\
+&=&M|\lambda|(t-a)\cdot d(\phi_1,\phi_2),
+\end{eqnarray*}
+其中
+$$M= \max_{\substack{a\leq t\leq b\\a\leq s\leq  b}}|k(t,s)|\geq 0.$$
+(这样看$T$不一定是压缩映射)\\
+利用上述结果, 继续计算可得
+\begin{eqnarray*}
+&&\left|(T^2\phi_1)(t)-(T^2\phi_2)(t)  \right|\\
+&=&|\lambda|\cdot\left| \int_a^t k(t,s)\left[(T\phi_1)(s)-(T\phi_2)(s)\right] \d s\right|\\
+&\leq &|\lambda|\cdot \int_a^t M\cdot\left|(T\phi_1)(s)-(T\phi_2)(s)\right| \d s\\
+&\leq &M^2|\lambda|^2\int_a^t (s-a)\cdot d(\phi_1,\phi_2)\d s\\
+&=&\frac{\big[M|\lambda|(t-a)\big]^2}{2}d(\phi_1,\phi_2).
+\end{eqnarray*}
+一直做下去, 对任意$m\in \Bbb{N}_+$就有
+$$\left|(T^m\phi_1)(t)-(T^m\phi_2)(t)  \right|\leq \frac{\big[M|\lambda|(t-a)\big]^m}{m!}d(\phi_1,\phi_2),\quad \forall t\in [a,b],$$
+上式两端对$t\in [a,b]$取最大值可得
+\begin{equation*}
+d\left(T^m\phi_1, T^m\phi_2  \right)\leq \frac{\big[M|\lambda|(b-a)\big]^m}{m!}d(\phi_1,\phi_2).
+\end{equation*}
+对任意$a\in \Bbb{R}$, 都有$\lim_{m\to \infty}\frac{a^m}{m!}=0$, 由该事实可知, 存在充分大的一个正整数$m$使得
+$$\alpha =\frac{\big[M|\lambda|(b-a)\big]^m}{m!}\in [0,1),$$
+此时$T^m$就是完备度量空间$C[a,b]$上的压缩映射. 根据上一个问题的结论, 映射$T$在$C[a,b]$中存在唯一的不动点, 所以积分方程\eqref{Volterra-1}在$[a,b]$上存在唯一的连续函数解.
+\end{proof}
+
+\end{document}
